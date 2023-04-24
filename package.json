@@ -1,12 +1,42 @@
 {
   "name": "ai-speech-text",
   "version": "1.0.0",
+  "description": "AI Mobile app to help translate voice into transcripts",
   "main": "node_modules/expo/AppEntry.js",
+  "contributors": [
+    "https://github.com/cmcWebCode40"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cmcWebCode40/ai-speech-text"
+  },
+  "bugs": {
+    "url": "https://github.com/cmcWebCode40/ai-speech-text/issues"
+  },
+  "keywords": [
+    "react-native",
+    "javascript",
+    "react",
+    "yarn",
+    "expo",
+    "expo eas"
+  ],
   "scripts": {
     "start": "expo start",
+    "ts:check": "yarn tsc --noemit",
+    "format:check": "npx prettier . --check",
+    "format": "npx prettier . --write",
+    "lint:check": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint": "eslint . --fix --ext .js,.jsx,.ts,.tsx",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "test": "jest",
+    "clean:node_modules": "rm -rf node_modules/",
+    "submit:ios": "eas submit -p ios --latest",
+    "build:ios": "eas build  --platform ios",
+    "build:android": "eas build --development --platform android",
+    "prepare": "husky install"
   },
   "dependencies": {
     "expo": "~48.0.11",
@@ -16,8 +46,40 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@react-native-community/eslint-config": "^3.2.0",
     "@types/react": "~18.0.14",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "babel-plugin-module-resolver": "^5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-react-native": "^3.9.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.1",
+    "prettier": "^2.8.8",
+    "react-native-svg-transformer": "^1.0.0",
     "typescript": "^4.9.4"
+  },
+  "lint-staged": {
+    "components/**/*.{ts,tsx}": [
+      "eslint --ext .tsx --ext .ts src/ --fix"
+    ],
+    "libs/**/*.{ts,tsx}": [
+      "eslint --ext .tsx --ext .ts src/ --fix"
+    ],
+    "./**": [
+      "prettier --write ."
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "private": true
 }
