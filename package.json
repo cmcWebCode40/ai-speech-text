@@ -67,12 +67,11 @@
   },
   "lint-staged": {
     "components/**/*.{ts,tsx}": [
-      "eslint --ext .tsx --ext .ts src/ --fix"
+      "eslint --ext .tsx --ext .ts src/ --fix",
+       "prettier --write ."
     ],
     "libs/**/*.{ts,tsx}": [
-      "eslint --ext .tsx --ext .ts src/ --fix"
-    ],
-    "./**": [
+      "eslint --ext .tsx --ext .ts src/ --fix",
       "prettier --write ."
     ]
   },
