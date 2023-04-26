@@ -1,23 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
+import { AppContext } from 'libs/context';
+import { useLoadFonts } from 'libs/hooks';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+
+import { Typography } from 'components/atoms';
+import { MainNavigation } from 'components/navigations';
 
 const App: React.FunctionComponent = () => {
+  const { isFontLoaded } = useLoadFonts();
+
+  if (!isFontLoaded) {
+    return <Typography>Loading fonts</Typography>;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+    <AppContext>
       <StatusBar style='auto' />
-    </View>
+      <MainNavigation />
+    </AppContext>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default App;
