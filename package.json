@@ -39,10 +39,17 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@react-navigation/bottom-tabs": "^6.5.7",
+    "@react-navigation/native": "^6.1.6",
+    "@react-navigation/native-stack": "^6.9.12",
     "expo": "~48.0.11",
+    "expo-splash-screen": "^0.18.1",
     "expo-status-bar": "~1.4.4",
     "react": "18.2.0",
-    "react-native": "0.71.6"
+    "react-native": "0.71.6",
+    "react-native-safe-area-context": "4.5.0",
+    "react-native-screens": "^3.20.0",
+    "react-native-svg": "13.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -50,6 +57,7 @@
     "@types/react": "~18.0.14",
     "@typescript-eslint/eslint-plugin": "^5.59.1",
     "@typescript-eslint/parser": "^5.59.1",
+    "babel-plugin-inline-dotenv": "^1.7.0",
     "babel-plugin-module-resolver": "^5.0.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.8.0",
@@ -67,11 +75,11 @@
   },
   "lint-staged": {
     "components/**/*.{ts,tsx}": [
-      "eslint --ext .tsx --ext .ts src/ --fix",
-       "prettier --write ."
+      "eslint --ext .tsx --ext .ts components/ --fix",
+      "prettier --write ."
     ],
     "libs/**/*.{ts,tsx}": [
-      "eslint --ext .tsx --ext .ts src/ --fix",
+      "eslint --ext .tsx --ext .ts libs/ --fix",
       "prettier --write ."
     ]
   },
