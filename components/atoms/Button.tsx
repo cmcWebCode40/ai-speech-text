@@ -94,7 +94,7 @@ const styles = (theme: Theme) => {
       borderRadius: theme.radius.rounded,
     },
     content: {
-      fontFamily: theme.fonts.NunitoSans,
+      fontFamily: theme.fonts.semiBold,
       fontSize: theme.fontSize.m,
       fontWeight: '600',
       lineHeight: 21,
@@ -131,7 +131,7 @@ const styles = (theme: Theme) => {
 const textStyles = (theme: Theme) => {
   return StyleSheet.create({
     content: {
-      fontFamily: theme.fonts.NunitoSansSemiBold,
+      fontFamily: theme.fonts.regular,
       fontSize: fontPixel(theme.fontSize.l),
       fontWeight: '700',
       lineHeight: 24,

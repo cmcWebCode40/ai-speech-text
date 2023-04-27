@@ -3,8 +3,9 @@ import { useThemedStyles } from 'libs/hooks';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Button, Typography } from 'components/atoms';
 import { HeaderNavigation } from 'components/navigations';
+import { GenerateFile } from 'components/organisms';
+import { SpeechToText } from 'components/organisms/SpeechToText';
 import { AppLayout } from 'components/templates';
 
 export const HomeScreen: React.FunctionComponent = () => {
@@ -14,8 +15,12 @@ export const HomeScreen: React.FunctionComponent = () => {
     <AppLayout>
       <HeaderNavigation />
       <View style={style.sectionContainer}>
-        <Typography>Home screen</Typography>
-        <Button variant='contained'>Submit</Button>
+        <View style={style.speechTextContainer}>
+          <SpeechToText />
+        </View>
+        <View style={style.generateFileContainer}>
+          <GenerateFile />
+        </View>
       </View>
     </AppLayout>
   );
@@ -27,7 +32,14 @@ const styles = () => {
       marginBottom: pixelSizeVertical(16),
     },
     sectionContainer: {
+      justifyContent: 'space-between',
       marginVertical: pixelSizeVertical(16),
+    },
+    speechTextContainer: {
+      marginVertical: pixelSizeVertical(24),
+    },
+    generateFileContainer: {
+      marginVertical: pixelSizeVertical(24),
     },
   });
 };
