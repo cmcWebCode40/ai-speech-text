@@ -2,21 +2,27 @@ import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
 
+import SourceSansProBlack from 'assets/fonts/SourceSansPro-Black.ttf';
+import SourceSansProBold from 'assets/fonts/SourceSansPro-Bold.ttf';
+import SourceSansProExtraLight from 'assets/fonts/SourceSansPro-ExtraLight.ttf';
+import SourceSansProLight from 'assets/fonts/SourceSansPro-Light.ttf';
+import SourceSansProRegular from 'assets/fonts/SourceSansPro-Regular.ttf';
+import SourceSansProSemiBold from 'assets/fonts/SourceSansPro-SemiBold.ttf';
+
 export const useLoadFonts = () => {
   const [fontError, setfontError] = useState<null | string>(null);
   const [isFontLoaded, setIsFontLoadedtError] = useState<boolean>(false);
 
   const loadFonts = async () => {
-    const NunitoSans = require('../../assets/fonts/NunitoSans-Regular.ttf');
-    const NunitoSansBold = require('../../assets/fonts/NunitoSans-Bold.ttf');
-    const NunitoSansSemiBold = require('../../assets/fonts/NunitoSans-SemiBold.ttf');
-
     try {
       await SplashScreen.preventAutoHideAsync();
       await Promise.all([
-        Font.loadAsync({ NunitoSans }),
-        Font.loadAsync({ NunitoSansSemiBold }),
-        Font.loadAsync({ NunitoSansBold }),
+        Font.loadAsync({ SourceSansProBlack }),
+        Font.loadAsync({ SourceSansProBold }),
+        Font.loadAsync({ SourceSansProExtraLight }),
+        Font.loadAsync({ SourceSansProLight }),
+        Font.loadAsync({ SourceSansProRegular }),
+        Font.loadAsync({ SourceSansProSemiBold }),
       ]);
       setIsFontLoadedtError(true);
     } catch (error) {

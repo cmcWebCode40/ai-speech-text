@@ -1,5 +1,5 @@
 const common = {
-  primary: '#2F007F',
+  primary: '#E53714',
   success: '#16a34a',
   error: '#dc2626',
   white: '#fff',

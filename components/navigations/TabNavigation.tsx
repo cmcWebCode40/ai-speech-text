@@ -61,7 +61,7 @@ const styles = (theme: Theme) => {
   return StyleSheet.create({
     tabBarLabelStyle: {
       fontSize: fontPixel(theme.fontSize.m),
-      fontFamily: theme.fonts.NunitoSansBold,
+      fontFamily: theme.fonts.semiBold,
       fontWeight: '700',
     },
     tabBarStyle: {
