@@ -6,9 +6,12 @@ export const theme = {
     ...colors.light,
   },
   fonts: {
-    NunitoSansBold: 'NunitoSansBold',
-    NunitoSansSemiBold: 'NunitoSansSemiBold',
-    NunitoSans: 'NunitoSans',
+    black: 'SourceSansProBlack',
+    bold: 'SourceSansProBold',
+    extraLight: 'SourceSansProExtraLight',
+    light: 'SourceSansProLight',
+    regular: 'SourceSansProRegular',
+    semiBold: 'SourceSansProSemiBold',
   },
   spacing: {
     xs: 4,
