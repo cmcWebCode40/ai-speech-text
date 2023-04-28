@@ -91,7 +91,9 @@ export const useVoice = (): VoiceHookReturn => {
         },
       });
     } catch (err) {
-      setError(err);
+      if (err instanceof Error) {
+        setError(err.message);
+      }
     }
   }, [results]);
 
