@@ -4,7 +4,6 @@
 
 A Mobile app to help translate voice to text and generate a downloadable file with a summarized verison of the text added using an AI tool which helps users to easily understand the context of the transcript .
 
-
 ## Demo 
 
 ![gif demo video](docs/demo.gif)
@@ -75,14 +74,21 @@ yarn android
 
 for runinng the project in an android emulator
 
+
+## Install Build (ios)
+
+in-order to test the app for internal distribution on your ios app follow the instructions of this  [Link](https://expo.dev/register-device/b293a506-708a-498e-9349-585760363a01) to register your device .
+
+Next step is to download the ios build through this [link expo dev](https://expo.dev/accounts/cmcwebcode/projects/ai-speech-text/builds/ed72fec9-5e17-4258-ab0d-0703e2f470b6)
+
+
+> NB: you will be required to turn on your developer mode and restart your device 
+
 ### Distribution
 
 This project uses expo application service (EAS) for creating builds and submissions so ensure you have the eas-cli installed globally on your machine see link for [guide here](https://docs.expo.dev/eas/)
 
 #### EAS Staging profile
-
-
-in-order to test for internal distribution on your ios follow the instructions of this  [Link](https://expo.dev/register-device/b293a506-708a-498e-9349-585760363a01) to register your device .
 
 - Create Builds
 
