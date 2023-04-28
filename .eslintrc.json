@@ -37,6 +37,8 @@
       "no-case-declarations": 0,
       "@typescript-eslint/no-explicit-any": 0,
       "@typescript-eslint/no-this-alias": 0,
+      "@typescript-eslint/no-shadow":"off",
+      "no-catch-shadow":"off",
       "simple-import-sort/imports": [
         "error",
         {

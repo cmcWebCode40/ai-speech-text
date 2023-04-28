@@ -11,6 +11,8 @@ npm-debug.*
 README.md 
 metro.config.js
 
+ios/
+android/
 .prettierrc
 
 web-build/

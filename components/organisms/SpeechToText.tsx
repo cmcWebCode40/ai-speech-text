@@ -10,17 +10,31 @@ import {
   TranscriptionCard,
 } from 'components/molecules';
 
-const transcript = `The sun was setting over the city, casting a warm orange glow across the buildings. People rushed past each other on the crowded sidewalks, their faces illuminated by the light from their smartphones. A street musician played a mournful tune on his guitar, hoping for a few coins from the passersby. In a nearby café, a couple sat sipping coffee and chatting animatedly, their laughter blending with the hum of the busy street. As darkness fell, the city came alive with a different energy, a vibrant and unpredictable energy that pulsed through its very streets and buildings.`;
-export const SpeechToText: React.FunctionComponent = () => {
+type SpeechToTextProps = {
+  onStart: () => void;
+  onStop: () => void;
+  hasStarted: boolean;
+  transcripts?: string;
+};
+
+export const SpeechToText: React.FunctionComponent<SpeechToTextProps> = ({
+  onStart,
+  onStop,
+  hasStarted,
+  transcripts,
+}) => {
   const style = useThemedStyles(styles);
 
   return (
     <View style={style.container}>
-      <View>
-        <RecordingWave style={style.wave} />
-        <RecordButton />
-      </View>
-      <TranscriptionCard transcript={transcript} />
+      {transcripts ? (
+        <TranscriptionCard transcript={transcripts} />
+      ) : (
+        <View>
+          <RecordingWave hasStarted={hasStarted} style={style.wave} />
+          <RecordButton onStart={onStart} onStop={onStop} />
+        </View>
+      )}
     </View>
   );
 };

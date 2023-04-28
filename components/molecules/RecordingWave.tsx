@@ -2,20 +2,33 @@ import { heightPixel, widthPixel } from 'libs/helpers';
 import { useThemedStyles } from 'libs/hooks';
 import { Theme } from 'libs/themes';
 import LottieView from 'lottie-react-native';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { StyleSheet, View, ViewProps } from 'react-native';
 
-export const RecordingWave: React.FunctionComponent<ViewProps> = ({
+type RecordingWaveProps = {
+  hasStarted: boolean;
+} & ViewProps;
+
+export const RecordingWave: React.FunctionComponent<RecordingWaveProps> = ({
+  hasStarted,
   style: viewStyles,
   ...otherProps
 }) => {
   const animation = useRef<LottieView>(null);
   const style = useThemedStyles(styles);
 
+  useEffect(() => {
+    if (hasStarted) {
+      animation.current?.play();
+    } else {
+      animation.current?.reset();
+    }
+  }, [hasStarted]);
+
   return (
     <View {...otherProps} style={[style.animationContainer, viewStyles]}>
       <LottieView
-        autoPlay={true}
+        autoPlay={false}
         ref={animation}
         style={style.lottieContainer}
         source={require('../../assets/animations/recording-wave.json')}

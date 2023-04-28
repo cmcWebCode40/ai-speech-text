@@ -35,6 +35,12 @@
 			</dict>
 		</dict>
 	</dict>
+	   <key>NSCameraUsageDescription</key>
+    <string>This app uses the camera to let user put a photo in his profile page.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Allow $(PRODUCT_NAME) to access the microphone</string>
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>This app uses speech recognition to convert your speech to text.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>SplashScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

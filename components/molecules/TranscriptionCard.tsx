@@ -1,5 +1,9 @@
 import * as Clipboard from 'expo-clipboard';
-import { pixelSizeHorizontal, pixelSizeVertical } from 'libs/helpers';
+import {
+  heightPixel,
+  pixelSizeHorizontal,
+  pixelSizeVertical,
+} from 'libs/helpers';
 import { useThemedStyles } from 'libs/hooks';
 import { colors, Theme } from 'libs/themes';
 import React, { useState } from 'react';
@@ -10,7 +14,7 @@ import { Icon, Typography } from 'components/atoms';
 type TranscriptionCardProps = {
   transcript: string;
 };
-
+const TIMEOUT_DURATION_SECOND = 3000;
 export const TranscriptionCard: React.FunctionComponent<
   TranscriptionCardProps
 > = ({ transcript }) => {
@@ -22,7 +26,7 @@ export const TranscriptionCard: React.FunctionComponent<
     setIsCopied(true);
     setTimeout(() => {
       setIsCopied(false);
-    }, 3000);
+    }, TIMEOUT_DURATION_SECOND);
   };
 
   return (
@@ -47,9 +51,9 @@ const styles = (theme: Theme) => {
       backgroundColor: theme.colors.background,
       alignItems: 'center',
       justifyContent: 'center',
-      flex: 1,
       borderWidth: 2,
       borderColor: theme.colors.gray100,
+      maxHeight: heightPixel(300),
     },
     copyTopClipboardContainer: {
       paddingVertical: pixelSizeVertical(8),

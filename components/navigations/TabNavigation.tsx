@@ -6,7 +6,7 @@ import { Theme } from 'libs/themes';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
-import { Icon } from 'components/atoms';
+import { Icon, IconName } from 'components/atoms';
 import { HomeScreen, LibraryScreen } from 'components/screens';
 
 const Tab = createBottomTabNavigator();
@@ -14,7 +14,7 @@ const Tab = createBottomTabNavigator();
 const tabs = [
   {
     name: HOME_SCREEN,
-    icon: 'add- circle',
+    icon: 'home-outline',
     component: HomeScreen,
   },
   {
@@ -43,7 +43,7 @@ export const TabNavigation: React.FunctionComponent = () => {
             tabBarLabelStyle,
             tabBarIcon: ({ focused }) => (
               <Icon
-                name='reader-outline'
+                name={item.icon as IconName}
                 size={20}
                 color={focused ? theme.colors.primary : theme.colors.black}
               />
@@ -61,7 +61,6 @@ const styles = (theme: Theme) => {
   return StyleSheet.create({
     tabBarLabelStyle: {
       fontSize: fontPixel(theme.fontSize.m),
-      fontFamily: theme.fonts.semiBold,
       fontWeight: '700',
     },
     tabBarStyle: {

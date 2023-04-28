@@ -5,6 +5,8 @@ const common = {
   white: '#fff',
   black: '#000',
   gray100: '#F6F7F9',
+  transparent: 'rgba(0, 0, 0, 0.42)',
+  inActive: '#C4C4C4',
 };
 
 const light = {
