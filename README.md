@@ -2,7 +2,21 @@
 
 ## Overview
 
-A Mobile app to help translate voice to text and generate a downloadable file with a summarized verison of the text added using an AIWe're creating a mobile app that uses AI to translate voice to text and generate a downloadable file with a summarized version of the text, providing users with an efficient and convenient communication tool.
+A Mobile app to help translate voice to text and generate a downloadable file with a summarized verison of the text added using an AI tool which helps users to easily understand the context of the transcript .
+
+
+## Demo 
+
+
+
+
+Application Architechure Overview
+<img
+  src="/docs//app_preview.png"
+  alt="Alt text"
+  title="Optional title"
+  style="margin:0 4px; max-width: 500px"
+/>
 
 ## Technologies
 
