@@ -6,6 +6,9 @@ app.json
 bable.config.js
 npm-debug.*
 
+ios/
+android/
+
 web-build/
 
 __test__
