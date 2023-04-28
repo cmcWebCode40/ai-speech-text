@@ -4,6 +4,15 @@
 
 A Mobile app to help translate voice to text and generate a downloadable file with a summarized verison of the text added using an AI tool which helps users to easily understand the context of the transcript .
 
+### Features
+
+- Helps users record thier speeches 
+- User open API protocol to generate a summary of the rocorded transcript
+- Create a downloadable shareable file that has both the AI generated summary and recorded transcript
+
+(Not implemented)
+- Saves user generated files into a public database  (optional)
+
 ## Demo 
 
 ![gif demo video](docs/demo.gif)
