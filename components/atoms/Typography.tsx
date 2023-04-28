@@ -31,24 +31,20 @@ const styles = (theme: Theme) => {
     },
     h1: {
       fontSize: fontPixel(theme.fontSize.xxxl),
-      fontFamily: theme.fonts.bold,
       fontWeight: '700',
       color: theme.colors.text,
     },
     h2: {
       fontSize: fontPixel(theme.fontSize.xxl),
-      fontFamily: theme.fonts.semiBold,
       fontWeight: '900',
     },
     p1: {
       fontSize: fontPixel(theme.fontSize.l),
       color: theme.colors.textSecondary,
-      fontFamily: theme.fonts.regular,
       fontWeight: '600',
     },
     p2: {
       fontSize: fontPixel(theme.fontSize.m),
-      fontFamily: theme.fonts.light,
       color: theme.colors.textSecondary,
     },
   });
