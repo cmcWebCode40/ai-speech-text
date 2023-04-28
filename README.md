@@ -1,4 +1,4 @@
-# AI Voice Text
+# AI Speech Text
 
 ## Overview
 
@@ -7,12 +7,14 @@ A Mobile app to help translate voice to text and generate a downloadable file wi
 
 ## Demo 
 
+![gif demo video](docs/demo.gif)
 
+[Full  demo on loom](https://www.loom.com/share/7ccffa30cc3040a5bf238c628853110f)
 
 
 Application Architechure Overview
 <img
-  src="/docs//app_preview.png"
+  src="/docs/app-architechure-overview.png"
   alt="Alt text"
   title="Optional title"
   style="margin:0 4px; max-width: 500px"
@@ -32,19 +34,27 @@ Application Architechure Overview
 
 ```
 yarn install
-
 ```
 
 ### Adding Environment Variables
 
 ```
 cp .env.sample .env
-
 ```
 
 This will copy the sample environment variables into the newly created `.env` required to get started.
 
 Please enter the following env required in the .env file for this app to work correctly
+
+```
+
+# Open API (Required)
+OPENAI_API_KEY=
+
+# EAS project id (Required for eas build)
+EXPO_PROJECT_ID=
+
+```
 
 ### Run dev environment
 
@@ -52,32 +62,35 @@ This project uses expo managed workflow so ensure you have the expo-cli installe
 
 ```
 yarn ios
-
 ```
 
 for runinng the project in ios simulator
 
+> **Please note Android native module not implemented**
+
+
 ```
 yarn android
-
 ```
 
 for runinng the project in an android emulator
 
 ### Distribution
 
-This project uses expo application service (EAS) for creating builds and submissions so ensure you have the eas-cli installed globally on your machine see link for[guide here](https://docs.expo.dev/eas/)
+This project uses expo application service (EAS) for creating builds and submissions so ensure you have the eas-cli installed globally on your machine see link for [guide here](https://docs.expo.dev/eas/)
 
 #### EAS Staging profile
+
+
+in-order to test for internal distribution on your ios follow the instructions of this  [Link](https://expo.dev/register-device/b293a506-708a-498e-9349-585760363a01) to register your device .
 
 - Create Builds
 
 ```
 yarn build:staging:ios
-
 ```
+
 
 ```
 yarn build:staging:android
-
 ```
