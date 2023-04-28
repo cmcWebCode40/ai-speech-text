@@ -15,3 +15,5 @@ __test__
 
 # macOS
 .DS_Store
+
+jest-setup.js
