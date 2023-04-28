@@ -4,7 +4,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { Typography } from 'components/atoms';
-import { HeaderNavigation } from 'components/navigations';
+import { HeaderNavigation } from 'components/navigations/HeaderNavigation';
 import { AppLayout } from 'components/templates';
 
 export const LibraryScreen: React.FunctionComponent = () => {
@@ -14,7 +14,9 @@ export const LibraryScreen: React.FunctionComponent = () => {
     <AppLayout>
       <HeaderNavigation />
       <View style={style.sectionContainer}>
-        <Typography>LibraryScreen screen</Typography>
+        <Typography>
+          Library Screen to display saved Transcripts (not Implemented)
+        </Typography>
       </View>
     </AppLayout>
   );

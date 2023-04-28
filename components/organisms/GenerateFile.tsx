@@ -4,13 +4,25 @@ import { StyleSheet, View } from 'react-native';
 
 import { Button } from 'components/atoms';
 
-export const GenerateFile: React.FunctionComponent = () => {
+type GenerateFileProps = {
+  cancel: () => void;
+  onGenerateFile: () => void;
+};
+
+export const GenerateFile: React.FunctionComponent<GenerateFileProps> = ({
+  cancel,
+  onGenerateFile,
+}) => {
   const style = useThemedStyles(styles);
 
   return (
     <View style={style.container}>
-      <Button variant='contained'>Generate file</Button>
-      <Button variant='outlined'>Cancel</Button>
+      <Button variant='contained' onPress={onGenerateFile}>
+        Generate file
+      </Button>
+      <Button onPress={cancel} variant='outlined'>
+        Cancel
+      </Button>
     </View>
   );
 };
