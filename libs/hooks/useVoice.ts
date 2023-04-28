@@ -1,50 +1,109 @@
 import Voice, {
-  SpeechEndEvent,
   SpeechErrorEvent,
   SpeechRecognizedEvent,
   SpeechResultsEvent,
   SpeechStartEvent,
-  SpeechVolumeChangeEvent,
 } from '@react-native-voice/voice';
-import { useEffect } from 'react';
+import { notificationToaster } from 'libs/helpers';
+import { useCallback, useEffect, useState } from 'react';
 
-export const useVoice = () => {
-  const handleSpeechRecognised = (value: SpeechRecognizedEvent) => {
-    return value;
-  };
-  const handleSpeechStart = (event: SpeechStartEvent) => {
-    return event;
-  };
-  const handleSpeechEnd = (value: SpeechEndEvent) => {
-    return value;
-  };
-  const handleSpeechError = (error: SpeechErrorEvent) => {
-    return error;
-  };
+type VoiceHookReturn = {
+  error: string | undefined;
+  hasStarted: boolean;
+  hasEnded: boolean;
+  isVoiceRecognised: boolean;
+  transcripts: string | undefined;
+  stopRecognizing: () => Promise<void>;
+  startRecognizing: () => Promise<void>;
+  reset: () => void;
+};
 
-  const handleSpeechResults = (data: SpeechResultsEvent) => {
-    return data;
-  };
+export const useVoice = (): VoiceHookReturn => {
+  const [error, setError] = useState<string | undefined>(undefined);
+  const [hasStarted, setHasStarted] = useState<boolean>(false);
+  const [hasEnded, setHasEnd] = useState<boolean>(false);
+  const [isVoiceRecognised, setIsVoiceRecongnised] = useState<boolean>(false);
+  const [transcripts, setTranscripts] = useState<string | undefined>(undefined);
+  const [results, setResults] = useState<string | undefined>(undefined);
 
-  const handleSpeechPartialResults = (data: SpeechResultsEvent) => {
-    return data;
-  };
+  const handleSpeechRecognised = useCallback(
+    (isRecognized: SpeechRecognizedEvent) => {
+      if (isRecognized.isFinal) {
+        setIsVoiceRecongnised(isRecognized.isFinal);
+        notificationToaster({
+          type: 'success',
+          options: {
+            text1: 'Voice Recognized',
+            text2: 'Voice has been detected',
+          },
+        });
+      }
+    },
+    []
+  );
 
-  const onSpeechVolumeChanged = (event: SpeechVolumeChangeEvent) => {
-    return event;
-  };
+  const handleSpeechStart = useCallback((event: SpeechStartEvent) => {
+    if (!event?.error) {
+      setHasStarted(true);
+      notificationToaster({
+        type: 'success',
+        options: {
+          text1: 'Voice Recogniton has started',
+          text2:
+            'Please tap the record button to stop when your speech has ended',
+          position: 'bottom',
+        },
+      });
+    }
+  }, []);
 
-  const stopRecognizing = async () => {
-    await Voice.stop();
-  };
+  const handleSpeechEnd = useCallback(() => {
+    setHasEnd(true);
+  }, []);
 
-  const cancelRecognizing = async () => {
-    await Voice.cancel();
-  };
+  const handleSpeechError = useCallback(
+    ({ error: speechError }: SpeechErrorEvent) => {
+      setError(speechError?.message);
+    },
+    []
+  );
 
-  const destroyRecognizer = async () => {
-    await Voice.destroy();
-  };
+  const handleSpeechResults = useCallback((data: SpeechResultsEvent) => {
+    if (data.value) {
+      const result = data.value[0];
+      setResults(result);
+    }
+  }, []);
+
+  const stopRecognizing = useCallback(async () => {
+    try {
+      await Voice.stop();
+      setHasEnd(true);
+      setHasStarted(false);
+      if (!results) return;
+      setTranscripts(results);
+      notificationToaster({
+        type: 'success',
+        options: {
+          text1: 'Voice Recogniton',
+          text2: 'Recogniton has been ended',
+          position: 'bottom',
+        },
+      });
+    } catch (err) {
+      setError(err);
+    }
+  }, [results]);
+
+  const startRecognizing = useCallback(async () => {
+    await Voice.start('en-US');
+  }, []);
+
+  const reset = useCallback(() => {
+    setResults(undefined);
+    setHasEnd(false);
+    setTranscripts(undefined);
+  }, []);
 
   useEffect(() => {
     Voice.onSpeechStart = handleSpeechStart;
@@ -52,16 +111,25 @@ export const useVoice = () => {
     Voice.onSpeechEnd = handleSpeechEnd;
     Voice.onSpeechError = handleSpeechError;
     Voice.onSpeechResults = handleSpeechResults;
-    Voice.onSpeechPartialResults = handleSpeechPartialResults;
-    Voice.onSpeechVolumeChanged = onSpeechVolumeChanged;
     return () => {
       Voice.destroy().then(Voice.removeAllListeners);
     };
-  }, []);
+  }, [
+    handleSpeechEnd,
+    handleSpeechError,
+    handleSpeechResults,
+    handleSpeechStart,
+    handleSpeechRecognised,
+  ]);
 
   return {
-    destroyRecognizer,
-    cancelRecognizing,
+    error,
+    reset,
+    hasStarted,
+    hasEnded,
+    isVoiceRecognised,
+    transcripts,
     stopRecognizing,
+    startRecognizing,
   };
 };
