@@ -15,7 +15,12 @@ ios/
 android/
 .prettierrc
 
+__test__
+
+
 web-build/
 
 # macOS
 .DS_Store
+
+jest-setup.js
