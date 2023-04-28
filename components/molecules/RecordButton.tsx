@@ -1,22 +1,49 @@
 import { heightPixel, widthPixel } from 'libs/helpers';
 import { useThemedStyles } from 'libs/hooks';
 import LottieView from 'lottie-react-native';
-import React, { useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
-export const RecordButton: React.FunctionComponent = () => {
+type RecordButtonProps = {
+  onStart: () => void;
+  onStop: () => void;
+};
+
+export const RecordButton: React.FunctionComponent<RecordButtonProps> = ({
+  onStart,
+  onStop,
+}) => {
+  const [isListening, setIsListening] = useState(false);
   const animation = useRef<LottieView>(null);
   const style = useThemedStyles(styles);
 
-  const handleStartAnimation = () => {
+  const handleStopListening = useCallback(() => {
+    animation.current?.reset();
+    setIsListening(false);
+    onStop();
+  }, [animation, onStop]);
+
+  const handleStartListening = useCallback(() => {
     animation.current?.play();
-  };
+    setIsListening(true);
+    onStart();
+  }, [animation, onStart]);
+
+  const handleAnimation = useCallback(() => {
+    if (isListening) {
+      handleStopListening();
+    } else {
+      handleStartListening();
+    }
+  }, [isListening, handleStartListening, handleStopListening]);
 
   return (
     <View style={style.animationContainer}>
-      <Pressable onPress={handleStartAnimation}>
+      <Pressable onPress={handleAnimation}>
         <LottieView
           autoPlay={false}
+          autoSize={true}
+          speed={1.5}
           ref={animation}
           style={style.lottieContainer}
           source={require('../../assets/animations/recording-button.json')}
