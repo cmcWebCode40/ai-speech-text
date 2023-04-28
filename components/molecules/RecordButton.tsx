@@ -1,4 +1,4 @@
-import { heightPixel, widthPixel } from 'libs/helpers';
+import { heightPixel } from 'libs/helpers';
 import { useThemedStyles } from 'libs/hooks';
 import LottieView from 'lottie-react-native';
 import React, { useCallback, useRef, useState } from 'react';
@@ -39,7 +39,7 @@ export const RecordButton: React.FunctionComponent<RecordButtonProps> = ({
 
   return (
     <View style={style.animationContainer}>
-      <Pressable onPress={handleAnimation}>
+      <Pressable style={style.button} onPress={handleAnimation}>
         <LottieView
           autoPlay={false}
           autoSize={true}
@@ -61,10 +61,14 @@ const styles = () => {
       flex: 1,
     },
     lottieContainer: {
-      height: heightPixel(200),
-      width: widthPixel(200),
+      height: heightPixel(150),
       alignItems: 'center',
       justifyContent: 'center',
+    },
+    button: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginRight: 10,
     },
   });
 };

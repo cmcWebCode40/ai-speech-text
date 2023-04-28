@@ -1,10 +1,12 @@
+import 'dotenv/config';
+
 const Config = {
   OPENAI_API_KEY: process.env.OPENAI_API_KEY,
 };
 
 export default {
   expo: {
-    name: 'ai-speech-text',
+    name: 'AI Speech Text',
     slug: 'ai-speech-text',
     version: '1.0.0',
     orientation: 'portrait',
@@ -22,8 +24,6 @@ export default {
       infoPlist: {
         NSSpeechRecognitionUsageDescription:
           'This app uses speech recognition to convert  speech to text.',
-        // NSCameraUsageDescription:
-        //   'This app uses the camera to let user put a photo in his profile page.',
       },
       bundleIdentifier: 'ai-speech-text',
     },
