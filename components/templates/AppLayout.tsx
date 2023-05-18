@@ -4,13 +4,13 @@ import { Theme } from 'libs/themes/theme';
 import React from 'react';
 import {
   Platform,
-  SafeAreaView,
   ScrollView,
   ScrollViewProps,
   StyleSheet,
   View,
   ViewStyle,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type AppLayoutProps = {
   children: React.ReactNode;
@@ -56,10 +56,10 @@ const styles = (theme: Theme) => {
       flex: 1,
       paddingTop: Platform.select({
         ios: pixelSizeVertical(12),
-        android: pixelSizeVertical(28),
+        android: pixelSizeVertical(16),
       }),
       paddingHorizontal: Platform.select({
-        ios: pixelSizeHorizontal(20),
+        ios: pixelSizeHorizontal(12),
         android: pixelSizeHorizontal(12),
       }),
       backgroundColor: theme.colors.background,
