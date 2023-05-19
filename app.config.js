@@ -32,6 +32,7 @@ export default {
         foregroundImage: './assets/adaptive-icon.png',
         backgroundColor: '#ffffff',
       },
+      blockedPermissions: ['android.permission.RECORD_AUDIO'],
       permissions: ['android.permission.RECORD_AUDIO'],
       package: 'com.anonymous.SpeectToTextApp',
     },

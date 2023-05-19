@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HOME_SCREEN, LIBRARY_SCREEN } from 'libs/constants';
-import { fontPixel, pixelSizeVertical } from 'libs/helpers';
+import { fontPixel } from 'libs/helpers';
 import { useTheme, useThemedStyles } from 'libs/hooks';
 import { Theme } from 'libs/themes';
 import React from 'react';
@@ -63,9 +63,6 @@ const styles = (theme: Theme) => {
       fontSize: fontPixel(theme.fontSize.m),
       fontWeight: '700',
     },
-    tabBarStyle: {
-      paddingTop: pixelSizeVertical(4),
-      paddingBottom: pixelSizeVertical(20),
-    },
+    tabBarStyle: {},
   });
 };
