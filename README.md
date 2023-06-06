@@ -1,6 +1,5 @@
 # AI Speech Text
 
-**(Stroma Full Stack Engineer Technical Chanllenge )**
 
 ## Overview
 
